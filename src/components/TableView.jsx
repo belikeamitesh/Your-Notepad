@@ -9,7 +9,8 @@ const TableView = ({ content, deleteContent, editContent }) => {
           <tr>
             <th className="border p-2">Key</th>
             <th className="border p-2">Value</th>
-            <th className="border p-2">Actions</th>
+            <th className="border p-2">Edit Value</th>
+            <th className="border p-2">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -17,10 +18,12 @@ const TableView = ({ content, deleteContent, editContent }) => {
             <tr key={key}>
               <td className="border p-2">{key}</td>
               <td className="border p-2">{content[key]}</td>
-              <td className="border p-2 flex justify-center space-x-2">
+              <td className="border p-2 text-center">
                 <button onClick={() => editContent(key)}>
-                  <PencilIcon className="h-5 w-5 text-blue-500" />
+                  <PencilIcon className="h-5 w-5 bold text-blue-500" />
                 </button>
+              </td>
+              <td className="border p-2 text-center space-x-2">
                 <button onClick={() => deleteContent(key)}>
                   <TrashIcon className="h-5 w-5 text-red-500" />
                 </button>
