@@ -15,12 +15,13 @@ const CardView = ({ content, deleteContent, editContent }) => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
       {Object.keys(content).map((key) => (
         <div
           key={key}
           className="relative bg-white shadow-lg rounded-lg p-6 border transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
         >
+          {/* Copied Notification */}
           {copiedText === key || copiedText === content[key] ? (
             <div className="absolute top-1 right-3 bg-green-100 text-green-600 px-2 py-1 rounded-md text-xs">
               <CheckIcon className="inline-block h-4 w-4 mr-1" />
@@ -28,8 +29,9 @@ const CardView = ({ content, deleteContent, editContent }) => {
             </div>
           ) : null}
 
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xl font-bold text-gray-800">{key}</h3>
+          {/* Key Section */}
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-lg font-semibold text-gray-800 truncate">{key}</h3>
             <button
               onClick={() => copyToClipboard(key)}
               className="text-gray-500 hover:text-gray-700 transition-colors"
@@ -39,8 +41,11 @@ const CardView = ({ content, deleteContent, editContent }) => {
             </button>
           </div>
 
-          <div className="flex items-center justify-between mb-6">
-            <p className="text-gray-600 text-sm break-all">{content[key]}</p>
+          {/* Value Section with long text handling */}
+          <div className="flex items-start justify-between mb-4">
+            <p className="text-gray-600 text-sm break-words max-h-16 overflow-hidden overflow-ellipsis">
+              {content[key]}
+            </p>
             <button
               onClick={() => copyToClipboard(content[key])}
               className="text-gray-500 hover:text-gray-700 transition-colors"
@@ -50,7 +55,8 @@ const CardView = ({ content, deleteContent, editContent }) => {
             </button>
           </div>
 
-          <div className="flex justify-between">
+          {/* Action Buttons */}
+          <div className="flex justify-between mt-4 pt-2 border-t">
             <button
               className="flex items-center space-x-1 text-blue-500 hover:text-blue-700 transition-colors"
               onClick={() => editContent(key)}
