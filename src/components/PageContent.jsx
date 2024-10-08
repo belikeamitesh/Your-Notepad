@@ -43,16 +43,16 @@ const PageContent = ({ currentPage, pages, setPages }) => {
     <div className="mt-6">
       <h2 className="text-xl font-semibold mb-4">Here is your saved list for {currentPage}</h2>
 
-      <div className="relative flex items-center mb-4">
-        <MagnifyingGlassIcon className="absolute left-2 h-5 w-5 text-gray-400" />
-        <input
-          className="border p-2 pl-10 w-full rounded-md focus:ring-2 focus:ring-blue-400"
-          type="text"
-          placeholder="Search by key or value..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-      </div>
+      <div className="relative flex items-center mb-4 ml-auto" style={{ width: "240px" }}>
+  <MagnifyingGlassIcon className="absolute left-2 h-5 w-5 text-gray-400" />
+  <input
+    className="border p-2 pl-10 w-full rounded-md focus:ring-2 focus:ring-blue-400"
+    type="text"
+    placeholder="Search by key or value..."
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+  />
+</div>
 
       <div className="flex mb-4">
         <input
